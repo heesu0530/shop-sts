@@ -1,0 +1,377 @@
+/* 회원가입화면 페이지에서 적용되는 css */
+@charset "UTF-8";
+
+.signformTable {
+	margin-top: 40px;
+}
+
+/* 회원가입폼 css */
+#signUpForm {
+	margin: 0 auto;
+	margin-right: 800px;
+	font-size: 30px;
+	padding-top: 95px;
+	max-width: 1000px; /* 최대 너비 설정 */
+}
+
+/* id입력칸 css */
+#signUpForm table tr th .inputId {
+	width: calc(100% - 58%); /* 너비 조정 */
+	height: 60px;
+	border: none;
+	border: 2px solid #ff6666;
+	border-radius: 5px; /* 둥근 모서리 */
+	padding-left: 25px; font-size : 19px;
+	margin-top: 5px; /* 상단 여백 */
+	margin-bottom: 10px; /* 하단 여백 */
+	box-sizing: border-box; /* padding과 border를 포함한 전체 너비 설정 */
+	float: left;
+	font-weight: bold;
+	margin-right: 10px;
+	font-size: 19px; /* postalCode 오른쪽 여백 */
+}
+
+#signUpForm table tr th .inputId:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+/* pw입력 칸 css */
+#signUpForm table tr th .inputPassword {
+	width: calc(100% - 30%); /* 너비 조정 */
+	height: 60px;
+	border: none;
+	border: 2px solid #ff6666;
+	border-radius: 5px; /* 둥근 모서리 */
+	padding-left: 25px;
+	font-size: 19px;
+	margin-bottom: 10px; /* 하단 여백 */
+	box-sizing: border-box; /* padding과 border를 포함한 전체 너비 설정 */
+	float: left;
+	border-radius: 5px;
+}
+
+#signUpForm table tr th .inputPassword:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+/* pw일치여부확인칸 css */
+#signUpForm table tr th .inputPasswordCheck {
+	width: calc(100% - 30%); /* 너비 조정 */
+	height: 60px;
+	border: none;
+	border: 2px solid #ff6666;
+	border-radius: 5px; /* 둥근 모서리 */
+	font-size: 19px;
+	padding-left: 25px;
+	font-size: 19px;
+	margin-bottom: 10px; /* 하단 여백 */
+	box-sizing: border-box; /* padding과 border를 포함한 전체 너비 설정 */
+	float: left;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+#signUpForm table tr th .inputPasswordCheck:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+/* 회원가입폼 약관체크 css */
+.SignPageCheckList ul {
+	text-align: center;
+	margin-top: 30px;
+	margin-left: 40px;
+}
+
+.SignPageCheckList ul li {
+	display: inline-block;
+	color: #505050;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.SignPageCheckList input[type="checkbox"] {
+	transform: scale(1.4);
+	padding-bottom: 90px;
+	margin-left: 10px;
+	accent-color: #66ffa3;
+}
+
+/* 회원가입폼 약관 css */
+.SignUpTerms {
+	background-color: #ff6666;
+	color: #ffffff;
+	width: 350px; /* 고정된 너비 설정 */
+	border: 2px solid #ff6666;
+	border-radius: 5px; /* 둥근 모서리 */
+	padding: 20px;
+	font-size: 15px;
+	color: #505050;
+	text-align: left;
+	margin: 20px 15px 10px 10px; /* 상단 여백 수정 */
+}
+
+.SignUpTerms li {
+	color: #ffffff;
+	margin-bottom: 5px;
+	margin-left: 15px;
+	font-weight: bold;
+}
+
+.SignUpTerms input[type="checkbox"] {
+	transform: scale(1.0);
+	accent-color: #66ffa3;
+}
+
+/* 회원가입폼 css */
+#signUpForm {
+	margin: 0 auto;
+	margin-left: 30%;
+	font-size: 30px;
+	color: #ff6666;
+	padding-top: 95px;
+	max-width: 800px; /* 최대 너비 설정 */
+}
+
+/* 이름입력칸 css */
+.inputName {
+	width: calc(100% - 58%); /* 너비 조정 */
+	height: 60px;
+	border: none;
+	border: 2px solid #ff6666;
+	border-radius: 5px; /* 둥근 모서리 */
+	font-size: 19px;
+	padding-left: 25px;
+	font-size: 19px;
+	box-sizing: border-box; /* padding과 border를 포함한 전체 너비 설정 */
+	float: left;
+	font-weight: bold;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+
+.inputName:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+.gender-label {
+	display: inline-block;
+	vertical-align: middle; /* 수직 가운데 정렬 */
+	height: 100px; /* 라벨 높이 */
+	line-height: 60px; /* 텍스트를 수직으로 중앙 정렬하기 위한 line-height 설정 */
+	font-size: 10px;
+	margin-top: 4px;
+}
+
+/* 생년월일 입력 칸 */
+#inputBirth {
+	width: calc(100% - 30%); /* 너비 조정 */
+	height: 60px;
+	border: none;
+	border: 2px solid #ff6666;
+	border-radius: 5px; /* 둥근 모서리 */
+	text-align: center;
+	font-size: 19px;
+	margin-top: 5px; /* 상단 여백 */
+	margin-bottom: 5px; /* 하단 여백 */
+	box-sizing: border-box; /* padding과 border를 포함한 전체 너비 설정 */
+	font-weight: bold;
+	padding-right: 19px;
+	border-radius: 5px;
+}
+
+#inputBirth:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+.inputCommon {
+	width: calc(100% - 30%); /* 너비 조정 */
+	height: 60px;
+	border: none;
+	border: 2px solid #ff6666;
+	border-radius: 5px; /* 둥근 모서리 */
+	padding-left: 25px;
+	font-size: 19px;
+	margin-top: 5px; /* 상단 여백 */
+	margin-bottom: 5px; /* 하단 여백 */
+	box-sizing: border-box; /* padding과 border를 포함한 전체 너비 설정 */
+	float: left;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+.inputCommon:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+#signUpForm table tr th label {
+	display: inline-block; /* 인라인 블록 요소로 설정하여 너비와 높이 설정 가능하도록 함 */
+	height: 60px; /* 예시로 설정한 높이, 필요에 따라 조정 가능 */
+	line-height: 60px; /* 텍스트를 수직으로 중앙 정렬하기 위한 line-height 설정 */
+	padding: 0 10px; /* 좌우 패딩을 추가하여 텍스트와 버튼 사이의 간격을 설정 */
+	font-size: 19px;
+}
+
+.postalCode {
+	width: calc(100% - 58%); /* 너비 조정 */
+	height: 60px;
+	border: none;
+	border: 2px solid #ff6666;
+	border-radius: 5px; /* 둥근 모서리 */
+	padding-left: 25px;
+	font-size: 19px;
+	margin-top: 5px; /* 상단 여백 */
+	margin-bottom: 5px; /* 하단 여백 */
+	box-sizing: border-box; /* padding과 border를 포함한 전체 너비 설정 */
+	float: left;
+	font-weight: bold;
+	margin-right: 10px;
+	border-radius: 5px; /* postalCode 오른쪽 여백 */
+}
+
+.postalCode:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+#zipCheckBtn {
+	margin-top: 16px;
+	margin-left: 6px;
+	padding: 8px;
+}
+
+#zipCheckBtn:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+.inputAddress {
+	width: calc(100% - 30%); /* 너비 조정 */
+	height: 60px;
+	border: none;
+	border: 2px solid #ff6666;
+	border-radius: 5px; /* 둥근 모서리 */
+	padding-left: 25px;
+	font-size: 19px;
+	margin-top: 5px; /* 상단 여백 */
+	margin-bottom: 5px; /* 하단 여백 */
+	box-sizing: border-box; /* padding과 border를 포함한 전체 너비 설정 */
+	float: left;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+.inputAddress:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+/* 아이디중복체크 버튼 */
+#idCheckButton {
+	margin-top: 18px;
+	margin-left: 10px;
+}
+
+#idCheckButton:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+/* 회원가입버튼 */
+#signUpSubmit {
+	background-color: #ff6666;
+	color: #ffffff;
+	width: calc(100% - 58%);
+	height: 80px;
+	font-size: 19px;
+	font-weight: bold;
+	margin: 30px 150px 50px 0;
+	border: none;
+	border-radius: 5px;
+}
+
+#signUpSubmit:focus {
+    border-color: #ff6666;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+#signUpSubmit:hover{
+	border: 1px solid #ff6666;
+	color: #ff6666;
+    background: #fff;
+}
+
+.left {
+	float: left;
+	width: 55%; /* 전체 너비의 절반만큼 설정 */
+}
+
+/* 오른쪽 영역 스타일 */
+.right {
+	float: right;
+	margin-top: 30px;
+	width: 45%; /* 전체 너비의 절반만큼 설정 */
+}
+
+#textarea {
+	color: #505050;
+	margin-top: 8px;
+	margin-left: 10px;
+	resize: none;
+	border: 2px solid #ff6666; /* 파란색 테두리 */
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	scrollbar-color: #ff6666 #f1f1f1;
+}
+
+#textarea:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+#cancelsubmit, #updatesubmit1 {
+	
+	background-color: #ff6666;
+	color: #ffffff;
+	width: 150px;
+	height: 50px;
+	font-size: 19px;
+	font-weight: bold;
+	margin-bottom: 30px;
+	border: none;
+	border-radius: 15px;
+}
+
+#updatesubmit1 {
+	margin-left: 30px;
+}
+
+#cancelsubmit:hover, #updatesubmit1:hover{
+	border: 1px solid #ff6666;
+	color: #ff6666;
+    background: #fff;
+}
+
+#cancelsubmit, #updatesubmit1 {
+    border-color: #ff6666;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}

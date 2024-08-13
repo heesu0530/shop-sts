@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecom6.dao.notice.NoticeMapper">
+
+   <select id="getTotalNotice" resultType="int">
+       SELECT COUNT(NOTI_NO) FROM NOTICET
+       WHERE TO_DATE(VDATE) >= SYSDATE
+       AND  STATE = 'A'
+       ORDER BY NOTI_NO DESC
+   </select>
+
+   <select id="getNoticies" parameterType="nvo" resultType="nvo">
+       SELECT * 
+       FROM
+       ( SELECT ROWNUM RN, A.*
+         FROM
+           (SELECT NOTI_NO, SUBJECT, CONTENT, READCOUNT, WRITER, VDATE, REGDATE, STATE
+            FROM NOTICET
+            WHERE TO_DATE(VDATE) >= SYSDATE
+            AND  STATE = 'A'
+           ) A
+       )
+       <if test="end > 1">
+           <![CDATA[       
+           WHERE RN >= #{start} AND RN <= #{end}
+           ]]>  
+       </if>
+   </select>
+
+   <insert id="generateNotice" parameterType="nvo">
+       <selectKey keyProperty="noti_no" resultType="int" order="BEFORE">
+           SELECT NVL(MAX(NOTI_NO), 0) + 1 FROM NOTICET
+       </selectKey>
+       INSERT INTO NOTICET(NOTI_NO, SUBJECT, CONTENT, WRITER, READCOUNT, VDATE, REGDATE, STATE)
+       VALUES(
+           #{noti_no}, #{subject}, #{content}, #{writer}, #{readcount}, #{vdate},
+           <choose>
+               <when test="regdate != null and regdate.length() > 0">
+                   #{regdate}
+               </when>
+               <otherwise>
+                   TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+               </otherwise>
+           </choose>,
+           'A'
+       )
+   </insert>
+
+   <select id="getNotice" parameterType="nvo" resultType="nvo">
+       SELECT NOTI_NO, SUBJECT, CONTENT, READCOUNT, WRITER, VDATE, REGDATE, STATE
+       FROM NOTICET
+       WHERE NOTI_NO = #{noti_no}
+       AND TO_DATE(VDATE) >= SYSDATE
+   </select> 
+
+   <update id="updateNotice" parameterType="nvo">
+       UPDATE NOTICET
+       SET SUBJECT = #{subject},  
+           CONTENT = #{content},  
+           WRITER = #{writer},   
+           VDATE = TO_CHAR(TO_DATE(#{vdate}), 'YYYY-MM-DD'),    
+           REGDATE = TO_CHAR(TO_DATE(#{regdate}), 'YYYY-MM-DD')  
+       WHERE NOTI_NO = #{noti_no}
+   </update>
+
+   <update id="countUpdate" parameterType="nvo">
+       UPDATE NOTICET
+       SET READCOUNT = READCOUNT + 1
+       WHERE NOTI_NO = #{noti_no}
+   </update>
+
+   <delete id="deleteNotice" parameterType="nvo">
+       DELETE FROM NOTICET WHERE NOTI_NO = #{noti_no}
+   </delete>
+
+</mapper>

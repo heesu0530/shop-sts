@@ -1,0 +1,163 @@
+/* 기본 스타일 */
+@charset "UTF-8";
+
+/* 로그인페이지 로고 css */
+#img {
+	margin-left: 617px;
+	margin-top: 77px;
+	width: 430px;
+	height: 430px;
+}
+
+ul{
+
+	list-style: none;
+
+}
+
+.tabmenu{
+	
+	max-width: 600px;
+
+	margin: 0 auto;
+
+	position: relative;
+	
+}
+
+.chk1:focus, .chk2:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+.tabmenu ul li {
+
+	width: 50%;
+
+	float: left;
+
+	text-align: center;
+
+	background: white;
+
+}
+
+.tabmenu ul li:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+.tabmenu ul li a {
+	
+	margin-bottom: 15px;
+	
+	margin-right: 50px;
+
+	display: block;
+
+	line-height: 40px;
+
+	height: 40px;
+
+	text-decoration: none;
+	color: #ff6666;
+	
+
+}
+
+.tabCon {
+
+	display: none;
+
+	text-align: left;
+
+	position: absolute;
+
+	left: 0;
+
+	top: 40px;
+
+	box-sizing: border-box;
+
+	
+
+}
+
+.tabmenu ul li:focus {
+    border-color: #66ffa3;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+.btnCon:target {
+	font-size: 19px;
+	
+	font-weight: bold;
+	
+	transition: background-color 0.3s ease;
+
+}
+
+.btnCon:target .tabCon{
+	
+	display: block;
+
+}
+
+.large_login_box input{
+  width: 150%;
+  height: 45px;
+  border: 2px solid #ff6666;
+  border-radius: 5px;
+  color: #ff6666;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0 0 80px;
+
+}
+
+.large_login_btn{
+	margin-left: 85px;
+	
+	margin-top: 5px;
+	
+	height: 120px;
+
+	padding: 10px;
+
+	font-size: 30px;
+
+	color: white;
+
+}
+#findId{
+	background-color: #ff6666;
+	color: #ffffff;
+	width: calc(100% - 58%);
+	height: 80px;
+	font-size: 19px;
+	font-weight: bold;
+	margin: 30px 0 0 220px;
+	border: none;
+	border-radius: 5px;
+}
+
+#setNewPw{
+	background-color: #ff6666;
+	color: #ffffff;
+	width: calc(100% - 58%);
+	height: 80px;
+	font-size: 19px;
+	font-weight: bold;
+	margin: 30px 0 0 205px;
+	border: none;
+	border-radius: 5px;
+}
+
+#findId:hover, #setNewPw:hover{
+	color: #ff6666;
+    background: #66ffa3;
+}

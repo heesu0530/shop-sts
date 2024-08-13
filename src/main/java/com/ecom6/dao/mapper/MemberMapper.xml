@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecom6.dao.mem.MemberMapper">
+	<select id="getMember" parameterType="mvo" resultType="mvo">
+		SELECT MEM_ID, MEM_PASSWD, GENDER_AB, MEM_NAME, MEM_BIRTH, MEM_PHONE,
+		MEM_EMAIL,
+		ZIPCODE, ADDRESS, ADDRESS2, REG_DATE, COUNTRY_AB, MODI_DATE, STATE_YN, IP,
+		MEM_ROLE
+		FROM MEMBER
+		WHERE MEM_ID = #{mem_id} and MEM_PASSWD = #{mem_passwd}
+	</select>
+	<select id="idCheck" parameterType="string">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEM_ID = #{mem_id}
+	</select>
+	<insert id="memberJoin" parameterType="mvo">
+		INSERT INTO MEMBER(MEM_ID, MEM_PASSWD, GENDER_AB, MEM_NAME, MEM_BIRTH,
+		MEM_PHONE, MEM_EMAIL,
+		ZIPCODE, ADDRESS, ADDRESS2, REG_DATE, COUNTRY_AB, MODI_DATE, STATE_YN, IP,
+		MEM_ROLE)
+		VALUES(#{mem_id},
+		#{mem_passwd},
+		'M',
+		#{mem_name},
+		#{mem_birth},
+		#{mem_phone},
+		#{mem_email},
+		#{zipcode},
+		#{address},
+		#{address2},
+		SYSDATE,
+		'A',
+		#{modi_date},
+		'Y',
+		'IP_VALUE',
+		'mem')
+	</insert>
+	<select id="searchId" parameterType="mvo" resultType="string">
+		SELECT MEM_ID FROM MEMBER
+		WHERE MEM_NAME = #{mem_name} AND MEM_PHONE = #{mem_phone}
+	</select>
+	<update id="memberUpdate" parameterType="mvo">
+		UPDATE MEMBER SET
+			MEM_ID = #{mem_id},
+			MEM_NAME = #{mem_name},
+			MEM_BIRTH = #{mem_birth},
+			MEM_PHONE = #{mem_phone},
+			MEM_EMAIL = #{mem_email},
+			ZIPCODE = #{zipcode},
+			ADDRESS = #{address},
+			ADDRESS2 = #{address2}
+		WHERE MEM_ID = #{mem_id}
+	</update>
+	<update id="updatePasswd" parameterType="mvo">
+		UPDATE MEMBER
+		SET MEM_PASSWD = #{mem_passwd}
+		WHERE MEM_ID = #{mem_id}
+	</update>
+	<delete id="memDelete" parameterType="mvo">
+	   DELETE FROM MEMBER 
+	   WHERE
+	    <!-- <![CDATA[       
+	     0=(SELECT COUNT(*) FROM ORDERT WHERE STATE<5 AND MEM_ID=#{mem_id})
+	     ]]>
+	    AND     --> MEM_ID=#{mem_id}
+   </delete>
+   <select id="getMemberTot" resultType="int">
+    SELECT COUNT(MEM_ID) FROM MEMBER WHERE MEM_ROLE='mem'
+   </select>
+   <select id="getMemberList" parameterType="mvo" resultType="mvo">
+    SELECT * 
+       FROM
+      ( SELECT ROWNUM RN, A.*
+         FROM
+           (SELECT MEM_ID, MEM_PASSWD, GENDER_AB, MEM_NAME, MEM_BIRTH,
+		MEM_PHONE, MEM_EMAIL,
+		ZIPCODE, ADDRESS, ADDRESS2, REG_DATE, COUNTRY_AB, MODI_DATE, STATE_YN, IP,
+		MEM_ROLE  
+            FROM MEMBER
+            WHERE MEM_ROLE ='mem'
+            ) A
+       ) 
+     <![CDATA[       
+       WHERE RN  >= 1 AND RN <= 6
+      ]]>  
+   </select>
+</mapper>
+
+
+
+

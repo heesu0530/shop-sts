@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecom6.dao.product.ProductMapper">
+	<select id="getProductCnt" resultType="int">
+		SELECT COUNT(P_NO) FROM PRODUCT
+	</select>
+	<select id="getProductList" resultType="pvo">
+		SELECT P_NO, STOCK, PRICE, P_NAME, DETAIL,
+		PR_DATE, IMAGE, PATH
+		FROM PRODUCT
+		ORDER BY P_NO DESC
+	</select>
+
+	<select id="getProduct" resultType="pvo" parameterType="int">
+		SELECT P_NO, STOCK, PRICE, P_NAME, DETAIL,
+		PR_DATE, IMAGE, PATH
+		FROM PRODUCT
+		WHERE P_NO = #{p_no}
+	</select>
+
+	<insert id="insertProduct" parameterType="pvo">
+		<selectKey keyProperty="p_no" order="BEFORE"
+			resultType="int">
+			SELECT NVL(MAX(P_NO),0)+1 FROM PRODUCT
+		</selectKey>
+		insert into product(P_NO, STOCK, PRICE, P_NAME, DETAIL,
+		PR_DATE, IMAGE, PATH)
+		values(#{p_no}, #{stock}, #{price}, #{p_name}, #{detail},
+		SYSDATE, #{image}, #{path})
+	</insert>
+	<update id="updateStocks">
+		<foreach collection="list" item="ovo" index="index"
+			separator=";" open="DECLARE BEGIN" close="; END;">
+			UPDATE PRODUCT
+			SET STOCK = STOCK - #{ovo.quantity}
+			<where>
+				P_NO = #{ovo.p_no}
+			</where>
+		</foreach>
+	</update>
+
+	<update id="updateStock" parameterType="ovo">
+		UPDATE PRODUCT
+		SET STOCK = STOCK + #{quantity}
+		WHERE P_NO = #{p_no}
+	</update>
+
+	<update id="updateProduct" parameterType="pvo">
+		UPDATE PRODUCT SET
+		STOCK = #{stock},
+		PRICE = #{price},
+		P_NAME= #{p_name},
+		DETAIL= #{detail},
+		PR_DATE= SYSDATE,
+		<if test="image!=null">
+			IMAGE = #{image},
+		</if>
+		PATH = #{path}
+		WHERE P_NO=#{p_no}
+	</update>
+	<delete id="deleteProduct" parameterType="pvo">
+		DELETE FROM PRODUCT WHERE P_NO=#{p_no}
+	</delete>
+  <!--  productList  -->
+<select id="productList" resultType="pvo"> SELECT P_NO, STOCK, PRICE, P_NAME, DETAIL, PR_DATE, IMAGE, PATH FROM PRODUCT ORDER BY P_NO DESC </select>
+</mapper>
+
+
+
+

@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+#productmgt{
+	margin: 0 auto;
+	width:80%;
+	height: 500px;
+}
+#productmgt h3{
+	color:#0e6d1d;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+#productmgt table{
+	margin-top: 20px;
+	width:80%;
+}
+#productmgt .btnArea{
+	margin-top: 20px;
+	text-align: center;
+	width:80%;
+}
+
+#productmgt .pcol1{
+	width: 10%;
+	text-align: center;
+	vertical-align: middle;
+	padding: 3px 3px 3px 3px; 
+}
+#productmgt .pcol2{
+	padding: 3px 3px 3px 10px;
+	text-align: left; 
+	vertical-align: middle;
+}
+#productmgt .pcol3{
+	width: 15%;
+	vertical-align: middle;
+}
+#productmgt .pcol4{
+	width: 25%;
+	vertical-align: middle;
+}
+#productmgt .pcol5{
+	width: 10%;
+	vertical-align: middle;
+}
+
+#product{
+	margin: 0 auto;
+	height: 500px;
+}
+#product h3{
+	color:#0e6d1d;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+#product table{
+	margin-top: 20px;
+	width:100%;
+}
+#product .pcol1{
+	width: 10%;
+	vertical-align: middle;
+	padding: 3px 3px 3px 3px; 
+}
+#product .pcol2{
+	padding: 3px 3px 3px 10px;
+	text-align: left; 
+	vertical-align: middle;
+}
+#product .pcol3{
+	width: 15%;
+	vertical-align: middle;
+}
+#product .pcol4{
+	width: 25%;
+	vertical-align: middle;
+}
+#product .pcol5{
+	width: 10%;
+	vertical-align: middle;
+}
+#product .pcol6{
+	width: 8%;
+	vertical-align: middle;
+}
+#product .pcol7{
+	width: 17%;
+	vertical-align: middle;
+}
+#product .pcol8{
+	width: 20%;
+	vertical-align: middle;
+}
+
+#productDt .outtbl{
+	margin-top: 10px;
+	width:90%;
+}
+
+#productDt .outtbl .outcol{
+	width: 30%;
+	vertical-align: middle;
+}
+#productDt .btnArea{
+    margin-top: 20px;
+	text-align: center;
+	width:80%;
+}
+#product .adcol1{
+	width:3%;
+	vertical-align: middle;
+}
+#product .adcol2{
+	width:8%;
+	vertical-align: middle;
+}
+#product .adcol3{
+/* 	width:15%; */
+	vertical-align: middle;
+}
+#product .adcol4{
+	width:6%;
+	vertical-align: middle;
+}
+#product .adcol5{
+	width:8%;
+	vertical-align: middle;
+}
+#product .adcol6{
+	width:10%;
+	vertical-align: middle;
+}
+#product .adcol7{
+	width:13%;
+	vertical-align: middle;
+}
+#product .adcol8{
+	width:10%;
+	vertical-align: middle;
+}
+#product .adcol9{
+	width:15%;
+	vertical-align: middle;
+}
+#product .valign{
+	vertical-align: middle;
+}

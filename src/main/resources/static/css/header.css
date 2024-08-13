@@ -1,0 +1,63 @@
+@charset "UTF-8";
+header {
+    height:150px;
+	position: relative;
+	margin-bottom: 30px;
+}
+header  #logo{
+	position:absolute;
+	padding-top:20px;
+	margin-top:20px;
+	left:50px;
+    width: 60px;
+	height: 75px;
+}
+header #top_menu{
+	float: right;
+	padding-top:20px;
+	margin-top:40px; 
+}
+header #top_menu table{
+	text-align:right;
+	width: 400px;
+}
+header #top_menu table th{
+	color: #0e6d1d;
+}
+/* aside#rightAside{ */
+/*     float: right; */
+/*     width: 10%; */
+/*     background-color: #f0f0f0; */
+/*     height: calc(100vh - 90px); 화면 높이에서 header와 footer 높이를 빼서 사이드바의 높이를 계산합니다. */
+/*     overflow-y: auto; 내용이 넘칠 경우 스크롤 생성 */
+/* } */
+
+nav#main_menu{
+	position: absolute;
+	margin-top: 40px;
+	height: 38px;
+	background-color: rgb(225, 245, 165);
+	color:#0e6d1d;
+	width: 100%;
+}
+nav ul {
+    list-style-type: none;
+    margin-left:250px;
+    text-align: center;
+}
+nav ul li {
+	display:inline-block;
+	margin-top: 7px;
+	padding-right: 50px;
+}
+
+nav ul li a {
+    text-decoration: none;
+}
+
+/* main { */
+/*     margin-left: 220px; 사이드바 너비 + 여백 */
+/*     padding: 20px; */
+/* } */
+
+

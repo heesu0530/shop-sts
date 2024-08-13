@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+aside#leftAside{
+    float: left;
+    width: 20%;
+/*     background-color: #f0f0f0; */
+    height: calc(100vh - 90px); /* 화면 높이에서 header와 footer 높이를 빼서 사이드바의 높이를 계산합니다. */
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 생성 */
+}
+
+aside #login_box{
+    margin: 0 5px 0 10px;
+	width: 210px;
+	height: 160px;
+	border: solid 1px #dddddd;
+}
+aside #login_title{
+   margin: 15px 0 5px 30px; 
+}
+aside #login_input{
+	float: left;
+}
+aside #login_input input{
+	width: 80px;
+	height: 25px;
+	margin:2px 5px 0 0;
+	border: solid 1px #dddddd; 
+}
+
+aside #login_button{
+ margin: 5px 0 0 5px;
+}
+
+aside #login_btn{
+	float: left;
+	width: 60px;
+	height: 45px;
+	margin: 6px 0 0 6px;
+}
+
+aside #join_search{
+	float:left;
+	padding: 10px;
+}
+
+
+
+
+
+
+
+

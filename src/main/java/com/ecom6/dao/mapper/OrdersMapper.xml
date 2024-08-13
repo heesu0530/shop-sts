@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecom6.dao.order.OrderMapper">
+	<insert id="insertOrders" parameterType="list">
+		<selectKey keyProperty="o_no" resultType="int"
+			order="BEFORE">
+			SELECT NVL(MAX(O_NO),0)+1 AS O_NO FROM ORDERT
+		</selectKey>
+		<foreach collection="list" item="ovo" index="index"
+			open="INSERT ALL " close="SELECT * FROM DUAL" separator=" ">
+			INTO ORDERT(O_NO, PRICE, AMOUNT, QUANTITY, O_REGDATE, STATE,
+			MEM_ID, P_NO)
+			VALUES(#{o_no}, #{ovo.price},
+			#{ovo.price}*#{ovo.quantity},
+			#{ovo.quantity}, SYSDATE, 1,
+			#{ovo.mem_id}, #{ovo.p_no})
+		</foreach>
+	</insert>
+	<select id="getTotalOrders" resultType="int" parameterType="ovo">
+		SELECT COUNT(O_NO) FROM ORDERT
+		<if test="mem_id!=null and mem_role=='mem'">
+			WHERE mem_id = #{mem_id}
+		</if>
+	</select>
+	<select id="getOrders" parameterType="ovo" resultType="ovo">
+		/* 조인을 이용한 방법 */
+		SELECT *
+		FROM
+		( SELECT ROWNUM RN, A.*
+		FROM
+		( /* 조인을 이용한 방법 */
+		SELECT O_NO, O.PRICE, AMOUNT, QUANTITY, TO_CHAR(O_REGDATE,'YYYY-MM-DD')
+		O_REGDATE, STATE,
+		MEM_ID, (SELECT MEM_NAME FROM MEMBER WHERE MEM_ID=#{mem_id}) MEM_NAME, O.P_NO,
+		P.IMAGE, P_NAME
+		FROM ORDERT O INNER JOIN PRODUCT P
+		ON O.P_NO = P.P_NO
+		/* -- 서브쿼리 이용한 방법
+		SELECT O_NO, O.PRICE, AMOUNT, QUANTITY, TO_CHAR(O_REGDATE,'YYYY-MM-DD')
+		O_REGDATE, STATE,
+		MEM_ID, O.P_NO, (SELECT P_NAME FROM PRODUCT WHERE P_NO=2) P_NAME
+		ORDERT O*/
+		WHERE mem_id = #{mem_id}
+		ORDER BY O_REGDATE DESC
+		) A
+		)
+		<choose>
+			<when test="start!=0 and end!=0">
+	      <![CDATA[       
+	       WHERE RN  >= #{start} AND RN <= #{end}
+	      ]]>
+			</when>
+			<otherwise>
+				<if test="p_no!=0">
+					WHERE P_NO = #{p_no}
+				</if>
+				<if test="o_no!=0">
+					AND O_NO = #{o_no}
+				</if>
+			</otherwise>
+		</choose>
+	</select>
+	<select id="getOrderList" parameterType="ovo" resultType="ovo">
+		SELECT *
+		FROM
+		( SELECT ROWNUM RN, A.*
+		FROM
+		(SELECT O.O_NO, O.P_NO, P.P_NAME, O.QUANTITY,
+		O.AMOUNT, TO_CHAR(O_REGDATE,'YYYY-MM-DD') O_REGDATE, O.PRICE,STATE,
+		M.MEM_ID, M.MEM_NAME, MEM_ROLE, P.STOCK, P.IMAGE
+		FROM ORDERT O
+		INNER JOIN PRODUCT P
+		ON O.P_NO = P.P_NO
+		INNER JOIN MEMBER M
+		ON O.MEM_ID = M.MEM_ID
+		ORDER BY O_NO DESC
+		) A
+		) 
+     <![CDATA[       
+       WHERE RN  >= #{start} AND RN <= #{end}
+      ]]>
+	</select>
+	<update id="orderStateUpdate" parameterType="list">
+		<foreach collection="list" item="item" index="index"
+			separator=";" open="DECLARE BEGIN" close="; END;">
+			UPDATE ORDERT SET
+			STATE = #{item.state},
+			O_REGDATE=SYSDATE
+			WHERE O_NO = #{item.o_no}
+			AND P_NO = #{item.p_no}
+			AND MEM_ID = #{item.mem_id}
+		</foreach>
+	</update>
+	<update id="updateState" parameterType="ovo">
+		UPDATE ORDERT SET
+		STATE = #{state},
+		O_REGDATE=SYSDATE
+		WHERE O_NO = #{o_no}
+		AND P_NO = #{p_no}
+		AND MEM_ID = #{mem_id}
+	</update>
+	<delete id="deleteOrder" parameterType="ovo">
+		DELETE FROM ORDERT
+		WHERE O_NO =#{o_no}
+		AND P_NO = #{p_no}
+		AND MEM_ID = #{mem_id}
+	</delete>
+</mapper>
+
+
+
+

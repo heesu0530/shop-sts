@@ -1,0 +1,91 @@
+@charset "UTF-8";
+*{ 
+  margin:0 auto;
+  padding:0;
+}
+ul{
+	list-style-type: none;
+}
+@media all and (min-width:768px) and (max-width:1023px){ 
+    body {
+    	width: 850px;
+        font-size: 16px;
+        margin: 0;
+		padding: 0;
+		font-family: Arial, sans-serif;
+    }
+}
+/* 태블릿 화면에서만 적용되는 스타일 */
+@media all and (min-width:768px) and (max-width: 991px) {
+    body {
+        width: 700px;
+        font-size: 14px;
+        margin: 0;
+	    padding: 0;
+	    font-family: Arial, sans-serif;
+    }
+}
+/* 모바일 화면에서만 적용되는 스타일 */
+@media all and (min-width:480px) and (max-width: 767px) {
+    body {
+        width: 400px;
+        font-size: 10px;
+        margin: 0;
+		padding: 0;
+	    font-family: Arial, sans-serif;
+    }
+}
+/* 모바일 가로, 테블릿 세로 (해상도 ~ 479px)*/ 
+@media all and (max-width:479px) {
+	body {
+	     width: 400px;
+         font-size: 10px;
+         margin: 0;
+		 padding: 0;
+		 font-family: Arial, sans-serif;
+    }
+}
+.clear{
+	clear:both;
+}
+
+a:link{color:  #0e6d1d; text-decoration: none;}
+a:visited{color: #0e6d1d; text-decoration: none;}
+a:active{color:  #0e6d1d; text-decoration: none;}
+a:hover{color: #1e2c06; text-decoration: none; 
+  font-weight: bold;}
+
+.alignRight{
+	text-align: right;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+.alignLeft{
+	text-align: left;
+    padding-left: 10px;
+}
+.alignCenter{
+	text-align:center;
+}
+.textBold{
+	font-weight: bold;
+}
+
+.buttonArea{
+	height:100px;
+	padding: 30px;
+	text-align: center;
+	border-bottom: 1px solid white;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	font-size:16px;
+}
+textarea {
+	resize: none;
+}
+
+
+
+
+

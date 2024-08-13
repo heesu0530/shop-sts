@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecom6.dao.qna.QnaMapper">
+	<select id="getQnas" resultType="qvo" parameterType="qvo">
+    SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM
+    (SELECT BNO, BREF, BSTEP, BLEVEL, READCOUNT,
+        SUBJECT, CONTENT, WRITER, TO_CHAR(TO_DATE(REGDATE), 'YYYY-MM-DD') REGDATE, IP, PASSWD
+        FROM BOARD
+        <if test="items!=null and items!='' and text != null and text!=''">
+            WHERE ${items} LIKE '%'|| #{text}||'%'
+        </if>
+        ORDER BY BREF DESC, BNO, BLEVEL) A )
+    <choose>
+        <when test="bno!=0">
+            WHERE BNO=#{bno}
+        </when>
+        <otherwise>
+            WHERE RN BETWEEN #{start} AND #{end}
+        </otherwise>
+    </choose>
+</select>
+		<select id="getTotalQna" resultType="int" parameterType="qvo">
+		SELECT COUNT(BNO) FROM BOARD
+		<if test="items!=null and items!='' and text != null and text!=''">
+			WHERE ${items} LIKE '%'|| #{text}||'%'
+		</if>
+	</select>
+	<!-- 게시글 등록 매퍼 -->
+    <insert id="qnaProc" parameterType="qvo">
+        <selectKey keyProperty="nbno" order="BEFORE" resultType="int">
+            SELECT NVL(MAX(bno), 0) + 1 nbno FROM BOARD
+        </selectKey>
+        
+        INSERT INTO BOARD (
+            BNO, BREF, BSTEP, BLEVEL, READCOUNT,
+            SUBJECT, CONTENT, WRITER, REGDATE, IP, PASSWD
+        ) VALUES (
+            #{nbno},
+            <choose>
+                <when test="bref == null or bref == 0">
+                    #{nbno}, 0, 0,
+                </when>
+                <otherwise>
+                    #{bref}, #{bstep} + 1, #{blevel} + 1,
+                </otherwise>
+            </choose>
+            0, #{subject}, #{content}, #{writer}, TO_CHAR(SYSDATE,'YYYY-MM-DD'), #{ip}, #{passwd}
+        )
+    </insert>
+	<!-- 문의글 목록 가져오기 -->
+    <select id="getqnas" parameterType="qvo" resultType="qvo">
+        SELECT BNO, BREF, BSTEP, BLEVEL, READCOUNT, SUBJECT, CONTENT, WRITER, TO_CHAR(TO_DATE(REGDATE),'YYYY-MM-DD') REGDATE , IP, PASSWD
+        FROM BOARD
+        WHERE BNO = #{bno}
+        AND SYSDATE >= REGDATE
+    </select>
+    <!-- 문의글 수정 -->
+    <update id="updateQna" parameterType="qvo">
+		UPDATE BOARD
+        SET SUBJECT = #{subject},
+            CONTENT = #{content},
+            WRITER = #{writer},
+            PASSWD = #{passwd}
+        WHERE BNO = #{bno}
+    </update>
+    <!-- deleteQna -->
+    <delete id="deleteQna" parameterType="qvo">
+	   DELETE FROM BOARD
+	   WHERE BNO = #{bno}
+	</delete>
+</mapper>
